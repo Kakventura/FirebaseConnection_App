@@ -27,7 +27,6 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
-// import androidx.compose.ui.text.font.FontWeight // Não usado explicitamente para BebasNeue aqui
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
@@ -37,18 +36,10 @@ import com.example.firebaseconnection.AuthState
 import com.example.firebaseconnection.AuthViewModel
 import com.example.firebaseconnection.R
 import com.example.firebaseconnection.ui.theme.BebasNeueRegularFontFamily
-import com.example.firebaseconnection.ui.theme.black // Supondo que você tenha 'black' definido
+import com.example.firebaseconnection.ui.theme.black
 import com.example.firebaseconnection.ui.theme.green
-// Importe suas cores personalizadas (exemplo)
-// import com.example.firebaseconnection.ui.theme.MyGreen
-// import com.example.firebaseconnection.ui.theme.MyWhite
 import com.example.firebaseconnection.ui.theme.white01
 import com.example.firebaseconnection.ui.theme.white02
-
-
-// Defina suas cores aqui ou importe-as se já estiverem em Color.kt
-val MyGreen = Color(0xFF4CAF50) // Exemplo de cor verde, substitua pela sua
-val MyWhite = Color.White       // Usando Color.White diretamente
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -134,7 +125,7 @@ fun LoginPage(
             OutlinedTextField(
                 value = email,
                 onValueChange = { email = it },
-                label = { Text(text = "Email", fontFamily = BebasNeueRegularFontFamily) },
+                label = { Text(text = "E-mail:", fontFamily = BebasNeueRegularFontFamily) },
                 colors = customTextFieldColors,
                 singleLine = true,
                 shape = textFieldShape,
@@ -157,7 +148,7 @@ fun LoginPage(
             OutlinedTextField(
                 value = password,
                 onValueChange = { password = it },
-                label = { Text(text = "Password", fontFamily = BebasNeueRegularFontFamily) },
+                label = { Text(text = "Senha:", fontFamily = BebasNeueRegularFontFamily) },
                 colors = customTextFieldColors,
                 singleLine = true,
                 shape = textFieldShape,
@@ -185,7 +176,6 @@ fun LoginPage(
 
             Spacer(modifier = Modifier.height(32.dp))
 
-            // Interação para o botão de Login
             val loginButtonInteractionSource = remember { MutableInteractionSource() }
             val isLoginButtonPressed by loginButtonInteractionSource.collectIsPressedAsState()
 
@@ -198,7 +188,7 @@ fun LoginPage(
                 animationSpec = tween(durationMillis = 100)
             )
             val loginButtonElevation by animateDpAsState(
-                targetValue = if (isLoginButtonPressed) 6.dp else 0.dp, // Sombra ao pressionar
+                targetValue = if (isLoginButtonPressed) 6.dp else 0.dp,
                 animationSpec = tween(durationMillis = 100)
             )
 
@@ -215,15 +205,15 @@ fun LoginPage(
                 interactionSource = loginButtonInteractionSource,
                 elevation = ButtonDefaults.buttonElevation(
                     defaultElevation = 0.dp,
-                    pressedElevation = loginButtonElevation, // Usa o Dp animado
-                    focusedElevation = 0.dp, // Pode ajustar se necessário
-                    hoveredElevation = 0.dp // Pode ajustar se necessário
+                    pressedElevation = loginButtonElevation,
+                    focusedElevation = 0.dp,
+                    hoveredElevation = 0.dp
                 ),
                 modifier = Modifier
-                    .fillMaxWidth(0.9f) // Ocupa 90% da largura, um pouco menor que os inputs
-                    .height(48.dp)      // Altura um pouco menor
+                    .fillMaxWidth(0.9f)
+                    .height(48.dp)
             ) {
-                Text(text = "Login", fontFamily = BebasNeueRegularFontFamily, fontSize = 18.sp)
+                Text(text = "Entrar", fontFamily = BebasNeueRegularFontFamily, fontSize = 18.sp)
             }
 
             Spacer(modifier = Modifier.height(16.dp))
