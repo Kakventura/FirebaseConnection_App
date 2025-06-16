@@ -78,5 +78,8 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
     implementation("androidx.compose.runtime:runtime-livedata")
+    implementation("androidx.compose.material:material-icons-core:1.6.0") // Verifique a última versão
+    implementation("androidx.compose.material:material-icons-extended:1.6.0") // Verifique a última versão
+
 
 }
