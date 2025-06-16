@@ -48,6 +48,7 @@ fun HomePage(
         }
     }
 
+    // Estilização da página - Texto principal e botão\
     Box(
         modifier = modifier.fillMaxSize()
     ) {

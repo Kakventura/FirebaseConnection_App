@@ -73,6 +73,7 @@ fun SignupPage(
         }
     }
 
+    // Estilização - com as mesmas estruturas da página de login
     Box(
         modifier = modifier.fillMaxSize()
     ) {
@@ -109,6 +110,7 @@ fun SignupPage(
 
             val textFieldShape = RoundedCornerShape(16.dp)
 
+            // Variáveis de estilização (redefinição de borda e suas cores)
             val customTextFieldColors = OutlinedTextFieldDefaults.colors(
                 focusedTextColor = Color.Black,
                 unfocusedTextColor = Color.Black,

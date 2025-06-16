@@ -12,13 +12,18 @@ import com.example.firebaseconnection.pages.SignupPage
 import androidx.compose.ui.Modifier
 
 @Composable
-fun MyAppNavigation(modifier: Modifier = Modifier, authViewModel: AuthViewModel) { // Agora 'Modifier' é o correto
+fun MyAppNavigation(modifier: Modifier = Modifier, authViewModel: AuthViewModel) {
     val navController = rememberNavController()
+    // O NavController controla os dados e permite a navegação destes entre as páginas
 
+    // NavHost é o contêiner que exibe o destino atual da navegação.
     NavHost(
         navController = navController,
-        startDestination = "login",
+        startDestination = "login", // Definição da tela principal como login
         modifier = modifier,
+
+        // Definição de destinos (navegação)
+        //Estilo if/else ("se reconhecer "login" deverá abrir a página LoginPage)
         builder = {
             composable("login") {
                 LoginPage(navController = navController, authViewModel = authViewModel)

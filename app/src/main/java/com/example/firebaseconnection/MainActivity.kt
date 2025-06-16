@@ -18,10 +18,12 @@ import com.example.firebaseconnection.ui.theme.FirebaseConnectionTheme
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        //experiência de visualização mais imersiva em dispositivos modernos ao permitir que o conteúdo ocupe toda a tela.
         enableEdgeToEdge()
         val authViewModel : AuthViewModel by  viewModels()
         setContent {
             FirebaseConnectionTheme {
+                // Estruturação para tornar a tela responsiva e consistente
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     MyAppNavigation(modifier =  Modifier.padding(innerPadding),authViewModel = authViewModel)
                 }

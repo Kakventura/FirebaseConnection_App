@@ -48,19 +48,24 @@ fun LoginPage(
     navController: NavController,
     authViewModel: AuthViewModel
 ) {
+
+    //Variáveis de estado
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
     var passwordVisible by remember { mutableStateOf(false) }
 
+    //Estados de autenticação e permissão de mostrar mensagens na tela
     val authState = authViewModel.authState.observeAsState()
     val context = LocalContext.current
 
+    //Componentes de estilização de foco dos campos
     val emailInteractionSource = remember { MutableInteractionSource() }
     val passwordInteractionSource = remember { MutableInteractionSource() }
 
     val isEmailFocused by emailInteractionSource.collectIsFocusedAsState()
     val isPasswordFocused by passwordInteractionSource.collectIsFocusedAsState()
 
+    //Caso aconteça tudo certo no login, vc será redirecionado para a tela "Home"
     LaunchedEffect(authState.value) {
         when (authState.value) {
             is AuthState.Authenticated -> navController.navigate("home")
@@ -73,6 +78,8 @@ fun LoginPage(
         }
     }
 
+    // Estilização dos componentes
+    //Imagem de fundo
     Box(
         modifier = modifier.fillMaxSize()
     ) {
@@ -90,11 +97,14 @@ fun LoginPage(
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
+            //Título da página
             Text(
                 text = "Login Page",
                 fontSize = 55.sp,
+                //Fonte exportada do Google Fonts
                 fontFamily = BebasNeueRegularFontFamily,
                 color = white01,
+                // Acréscimo de um shadow na fonte
                 style = TextStyle(
                     shadow = Shadow(
                         color = Color.Black.copy(alpha = 0.5f),
@@ -105,10 +115,13 @@ fun LoginPage(
                 modifier = Modifier.offset(y = (0).dp)
             )
 
+            //Espaço estilizado
             Spacer(modifier = Modifier.height(32.dp))
 
+            // Arredondamento da borda dos textfields
             val textFieldShape = RoundedCornerShape(16.dp)
 
+            // Estilização - Reconfiguração de cores, bordas, sombras etc.
             val customTextFieldColors = OutlinedTextFieldDefaults.colors(
                 focusedTextColor = Color.Black,
                 unfocusedTextColor = Color.Black,
@@ -122,6 +135,7 @@ fun LoginPage(
                 unfocusedLabelColor = black.copy(alpha = 0.7f)
             )
 
+            // Campo de e-mail
             OutlinedTextField(
                 value = email,
                 onValueChange = { email = it },
@@ -145,6 +159,7 @@ fun LoginPage(
 
             Spacer(modifier = Modifier.height(16.dp))
 
+            //Campo de senha
             OutlinedTextField(
                 value = password,
                 onValueChange = { password = it },
@@ -152,6 +167,7 @@ fun LoginPage(
                 colors = customTextFieldColors,
                 singleLine = true,
                 shape = textFieldShape,
+                // Criação para ocultar ou mostrar senha
                 visualTransformation = if (passwordVisible) VisualTransformation.None else PasswordVisualTransformation(),
                 trailingIcon = {
                     val image = if (passwordVisible) Icons.Filled.Visibility else Icons.Filled.VisibilityOff
@@ -176,6 +192,7 @@ fun LoginPage(
 
             Spacer(modifier = Modifier.height(32.dp))
 
+            // Estilizaçaõ - Reconfiguração para animar o botão de login
             val loginButtonInteractionSource = remember { MutableInteractionSource() }
             val isLoginButtonPressed by loginButtonInteractionSource.collectIsPressedAsState()
 
@@ -192,6 +209,7 @@ fun LoginPage(
                 animationSpec = tween(durationMillis = 100)
             )
 
+            // Botão de login com as configurações de autenticação
             Button(
                 onClick = { authViewModel.login(email, password) },
                 enabled = authState.value != AuthState.Loading,
