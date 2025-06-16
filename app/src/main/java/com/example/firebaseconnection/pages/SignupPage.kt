@@ -125,7 +125,7 @@ fun SignupPage(
             OutlinedTextField(
                 value = email,
                 onValueChange = { email = it },
-                label = { Text(text = "Email", fontFamily = BebasNeueRegularFontFamily) },
+                label = { Text(text = "E-mail:", fontFamily = BebasNeueRegularFontFamily) },
                 colors = customTextFieldColors,
                 singleLine = true,
                 shape = textFieldShape,
@@ -148,14 +148,14 @@ fun SignupPage(
             OutlinedTextField(
                 value = password,
                 onValueChange = { password = it },
-                label = { Text(text = "Password", fontFamily = BebasNeueRegularFontFamily) },
+                label = { Text(text = "Crie sua senha:", fontFamily = BebasNeueRegularFontFamily) },
                 colors = customTextFieldColors,
                 singleLine = true,
                 shape = textFieldShape,
                 visualTransformation = if (passwordVisible) VisualTransformation.None else PasswordVisualTransformation(),
                 trailingIcon = {
                     val image = if (passwordVisible) Icons.Filled.Visibility else Icons.Filled.VisibilityOff
-                    val description = if (passwordVisible) "Hide password" else "Show password"
+                    val description = if (passwordVisible) "Ocultar senha" else "Mostrar senha"
                     IconButton(onClick = { passwordVisible = !passwordVisible }) {
                         Icon(imageVector = image, description, tint = Color.Black.copy(alpha = 0.7f))
                     }
@@ -214,7 +214,7 @@ fun SignupPage(
                     .fillMaxWidth(0.9f)
                     .height(48.dp)
             ) {
-                Text(text = "Create account", fontFamily = BebasNeueRegularFontFamily, fontSize = 18.sp)
+                Text(text = "Criar conta!", fontFamily = BebasNeueRegularFontFamily, fontSize = 18.sp)
             }
 
             Spacer(modifier = Modifier.height(16.dp))
@@ -223,7 +223,7 @@ fun SignupPage(
                 navController.navigate("login")
             }) {
                 Text(
-                    text = "Already have an account, Login",
+                    text = "Já tem uma conta? Acesse-a!",
                     color = white01,
                     fontFamily = BebasNeueRegularFontFamily,
                     fontSize = 16.sp
